@@ -1,0 +1,38 @@
+{% extends 'my_blog/base.html' %}
+{% load my_blog_tags %}
+
+
+{% block content %}
+<h2 class="tm-color-primary tm-post-title">{{title}}</h2>
+
+<form action="{% url 'add_post' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-error">{{ form.non_field_errors }}</div>
+
+{% for f in form %}
+<p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+<div class="form-error">{{ f.errors }}</div>
+{% endfor %}
+
+
+    <button class="tm-btn tm-btn-primary tm-btn-small" type="submit">Click to add</button>
+</form>
+
+{% endblock %}
+
+
+
+{% block footer %}
+<!-- FOOTER STARTS-->
+<footer class="row tm-row">
+    <hr class="col-12">
+    <div class="col-md-6 col-12 tm-color-gray">
+        Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+    </div>
+    <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+        All rights reserved
+    </div>
+</footer>
+<!-- FOOTERD ENDS -->
+{% endblock %}

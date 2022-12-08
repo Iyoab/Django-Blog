@@ -1,0 +1,23 @@
+{% extends 'my_blog/base.html'%}
+
+{% block content %}
+
+
+<form action="" class="mb-5 tm-comment-form" method = "post">
+    <h2 class="tm-color-primary tm-post-title">{{title}}</h2>
+    {% csrf_token %}
+{% for f in form %}
+<div class="mb-4">
+    <p><label class="form-label" for="{{f.id_for_label}}">{{f.label}}: </label>{{ f }}</p>
+    <div class="form-error">{{ f.errors }}</div>
+</div>
+
+{% endfor %}
+
+
+<button class="tm-btn tm-btn-primary tm-btn-small" type="submit">Register</button>
+</form>
+
+{% endblock %}
+
+                        
